@@ -1,5 +1,6 @@
 import numpy as np
 import struct
+from visualizer import display_predictions
 
 def read_mnist_images(filename):
     with open(filename, 'rb') as file:
@@ -138,3 +139,5 @@ print("Accuracy: {:.2f}%".format(accuracy * 100))
 
 test_loss = compute_loss(y_test, test_predictions)
 print(f"Loss when compared to test set = {test_loss}")
+
+display_predictions(test_images, test_labels, predicted_labels, num_samples=10)

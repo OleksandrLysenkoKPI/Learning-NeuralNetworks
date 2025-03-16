@@ -1,6 +1,6 @@
 import numpy as np
 import struct
-from visualizer import display_images
+from visualizer import display_images, display_predictions
 
 def read_mnist_images(filename):
     with open(filename, 'rb') as file:
@@ -25,7 +25,7 @@ test_labels = read_mnist_labels('MNIST dataset/t10k-labels.idx1-ubyte')
 train_images = train_images.astype('float32') / 255
 test_images = test_images.astype('float32') / 255
 
-# display_images(train_images, train_labels, 3, 5)
+display_images(train_images, train_labels, 3, 5)
 
 train_images_flatten = train_images.reshape(train_images.shape[0], -1)
 test_images_flatten = test_images.reshape(test_images.shape[0], -1)
@@ -132,3 +132,5 @@ print("Accuracy: {:.2f}%".format(accuracy * 100))
 # Compute loss on the test set
 test_loss = compute_loss(y_test, test_predictions)
 print(f"Loss when compared to test set = {test_loss}")
+
+display_predictions(test_images, test_labels, predicted_labels, num_samples=10)
